@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Du Lịch Đà Lạt 2025 - Khám Phá Thành Phố Ngàn Hoa</title>
+    <meta name="description" content="Khám phá các tour du lịch Đà Lạt trọn gói, địa điểm check-in hấp dẫn, và dịch vụ book phòng, vé, xe giá tốt nhất. Lên kế hoạch cho chuyến đi của bạn ngay hôm nay!">
+    <link rel="stylesheet" href="service.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container main-nav">
+            <a href="/" class="logo" title="Trang chủ">Đà Lạt Travel</a>
+            <nav class="nav_container">
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#locations">Địa điểm</a></li>
+                    <li><a href="#pricing">Gói tour</a></li>
+                    <li><a href="#services">Dịch vụ</a></li>
+                    <li><a href="https://sanpham.starglobal3d.com/smart-tourism-3d/da-lat/">Trải nghiệm 3D</a></li>
+                    <li><a href="#footer">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">&#9776;</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <img 
+                src="image/dalat_spanner.png" 
+                alt="Toàn cảnh thành phố Đà Lạt từ trên cao" 
+                class="hero-bg" 
+                loading="eager"
+            >
+            <div class="hero-content">
+                <h1>Khám Phá Đà Lạt - Thành Phố Ngàn Hoa</h1>
+                <p>Trải nghiệm vẻ đẹp lãng mạn và không khí trong lành</p>
+                <a href="#services" class="btn">Tìm Tour Ngay</a>
+            </div>
+        </section>
+
+        <section id="locations" class="fade-in-section">
+            <div class="container">
+                <h2 class="section-title">Địa Điểm Nổi Bật</h2>
+                <div class="locations-grid">
+                    <article class="location-card" 
+                        data-title="Hồ Xuân Hương"
+                        data-img="image/ho_xuan_huong.png"
+                        data-description="Hồ Xuân Hương được ví như trái tim của Đà Lạt, là nơi lý tưởng để đi dạo, đạp vịt và tận hưởng không khí trong lành. Xung quanh hồ là những vườn hoa và rừng thông xanh mướt, tạo nên một khung cảnh thơ mộng.">
+                        <img src="image/ho_xuan_huong.png" loading="lazy" alt="Hồ Xuân Hương thơ mộng">
+                        <div class="location-card-content">
+                            <h3>Hồ Xuân Hương</h3>
+                            <p>Trái tim của thành phố, nơi lý tưởng cho các hoạt động ngoài trời và ngắm cảnh hoàng hôn.</p>
+                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                        </div>
+                    </article>
+                    <article class="location-card"
+                        data-title="Thung Lũng Tình Yêu"
+                        data-img="image/thung_lung_tinh_yeu.png"
+                        data-description="Đúng như tên gọi, Thung lũng Tình Yêu là một trong những địa điểm lãng mạn bậc nhất Đà Lạt. Nơi đây có cảnh quan thiên nhiên hữu tình với đồi thông, vườn hoa và hồ nước, là điểm đến yêu thích của các cặp đôi.">
+                        <img src="image/thung_lung_tinh_yeu.png" loading="lazy" alt="Cảnh quan tại Thung Lũng Tình Yêu">
+                        <div class="location-card-content">
+                            <h3>Thung Lũng Tình Yêu</h3>
+                            <p>Một trong những thắng cảnh lãng mạn nhất, với những đồi thông và vườn hoa rực rỡ.</p>
+                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                        </div>
+                    </article>
+                    <article class="location-card"
+                        data-title="Đồi Mộng Mơ"
+                        data-img="image/doi_mong_mo.png"
+                        data-description="Đồi Mộng Mơ là một khu du lịch với kiến trúc độc đáo, tái hiện Vạn Lý Trường Thành thu nhỏ và những ngôi nhà cổ. Đây là nơi giao thoa giữa vẻ đẹp thiên nhiên và văn hóa, mang đến trải nghiệm thú vị cho du khách.">
+                        <img src="image/doi_mong_mo.png" loading="lazy" alt="Một góc kiến trúc tại Đồi Mộng Mơ">
+                        <div class="location-card-content">
+                            <h3>Đồi Mộng Mơ</h3>
+                            <p>Khu du lịch với cảnh quan thơ mộng, kiến trúc độc đáo và nhiều hoạt động văn hóa.</p>
+                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                        </div>
+                    </article>
+                    <article class="location-card"
+                        data-title="Vườn Hoa Thành Phố"
+                        data-img="image/vuon_hoa_thanh_pho.png"
+                        data-description="Nơi quy tụ hàng trăm loài hoa khoe sắc quanh năm, Vườn hoa Thành phố là thiên đường cho những ai yêu thích vẻ đẹp của tự nhiên. Bạn có thể chiêm ngưỡng từ hoa hồng, cẩm tú cầu đến các loài lan quý hiếm.">
+                        <img src="image/vuon_hoa_thanh_pho.png" loading="lazy" alt="Các loài hoa khoe sắc tại Vườn Hoa Thành Phố">
+                        <div class="location-card-content">
+                            <h3>Vườn Hoa Thành Phố</h3>
+                            <p>Thiên đường của các loài hoa, nơi bạn có thể chiêm ngưỡng vẻ đẹp rực rỡ của tự nhiên.</p>
+                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="fade-in-section">
+            <div class="container">
+                <h2 class="section-title">Giá & Gói Tour</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Tiết Kiệm</h3>
+                        <div class="price">200.000<span>đ/người</span></div>
+                        <ul>
+                            <li>Xe đưa đón</li>
+                            <li>Khách sạn 2 sao</li>
+                            <li>Tham quan 2 địa điểm</li>
+                            <li>Bữa sáng hàng ngày</li>
+                        </ul>
+                        <a href="#services" class="btn btn-secondary">Chọn gói</a>
+                    </div>
+                    <div class="pricing-card standard">
+                        <h3>Tiêu Chuẩn</h3>
+                        <div class="price">1.250.000<span>đ/người</span></div>
+                        <ul>
+                            <li>Xe đưa đón</li>
+                            <li>Khách sạn 3-4 sao</li>
+                            <li>Tham quan 4 địa điểm nổi bật</li>
+                            <li>Ăn 3 bữa/ngày</li>
+                        </ul>
+                        <a href="#services" class="btn">Phổ biến nhất</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Cao Cấp</h3>
+                        <div class="price">10.000.000<span>đ/người</span></div>
+                        <ul>
+                            <li>Xe đưa đón</li>
+                            <li>Resort/Khách sạn 5 sao</li>
+                            <li>Tour riêng theo yêu cầu</li>
+                            <li>Bảo hiểm du lịch cao cấp</li>
+                        </ul>
+                        <a href="#services" class="btn btn-secondary">Chọn gói</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="fade-in-section">
+            <div class="container">
+                <h2 class="section-title">Dịch Vụ Của Chúng Tôi</h2>
+                <div class="services-grid">
+                    <div class="service-module form-container">
+                        <h3>Đặt Dịch Vụ Du Lịch</h3>
+                        <form class="booking-form">
+                            <div class="form-group">
+                                <label for="booking-name">Họ và tên *</label>
+                                <input type="text" id="booking-name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-email">Email *</label>
+                                <input type="email" id="booking-email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-phone">Số điện thoại *</label>
+                                <input type="tel" id="booking-phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-date">Ngày tham quan *</label>
+                                <input type="date" id="booking-date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-guests">Số lượng khách *</label>
+                                <input type="number" id="booking-guests" min="1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-package">Chọn gói tour *</label>
+                                <select id="booking-package" required>
+                                    <option value="">-- Chọn gói tour --</option>
+                                    <option value="Gói Tiết Kiệm">Gói Tiết Kiệm (200.000đ/người)</option>
+                                    <option value="Gói Tiêu Chuẩn">Gói Tiêu Chuẩn (1.250.000đ/người)</option>
+                                    <option value="Gói Cao Cấp">Gói Cao Cấp (40.000.000đ/người)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-destination">Chọn địa điểm tham quan chính *</label>
+                                <select id="booking-destination" required>
+                                    <option value="">-- Chọn địa điểm --</option>
+                                    <option value="Hồ Xuân Hương">Hồ Xuân Hương</option>
+                                    <option value="Thung Lũng Tình Yêu">Thung Lũng Tình Yêu</option>
+                                    <option value="Đồi Mộng Mơ">Đồi Mộng Mơ</option>
+                                    <option value="Vườn Hoa Thành Phố">Vườn Hoa Thành Phố</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-vehicle">Loại xe di chuyển *</label>
+                                <select id="booking-vehicle" required>
+                                    <option value="">-- Chọn loại xe --</option>
+                                    <option value="Xe đoàn">Xe đoàn 42 chỗ</option>
+                                    <option value="Xe riêng 4 chỗ">Xe riêng 4 chỗ</option>
+                                    <option value="Xe riêng 7 chỗ">Xe riêng 7 chỗ</option>
+                                    <option value="Xe shuttle">Xe shuttle (đưa đón sân bay)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-room">Loại phòng khách sạn *</label>
+                                <select id="booking-room" required>
+                                    <option value="">-- Chọn loại phòng --</option>
+                                    <option value="Phổ thông">Phổ thông (200.000 VNĐ/đêm), bao gồm tiện ích cơ bản</option>
+                                    <option value="Thương gia">Thương gia (1.000.000 VNĐ/đêm), bao gồm các tiện ích nâng cao</option>
+                                    <option value="Tổng thống">Tổng thống (2.000.000 VNĐ/đêm), bao gồm các tiện ích cao cấp</option>
+                                </select>
+                            </div>
+                            
+                            <button type="button" class="btn" id="watch_before">Tham khảo giá</button>
+                            <button type="submit" class="btn" style="background: red; margin-top: 0;">Gửi yêu cầu</button>
+                        </form>
+                    </div>
+
+                    <div class="service-module calculation-result" id="calculation-result">
+                        <h3>Chi Phí Ước Tính</h3>
+                        <div id="result-display" class="price-estimate-box">
+                            <em style="color: #666;">Điền form và nhấn "Gửi yêu cầu" để xem chi phí!</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="map-section" class="fade-in-section" style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">Bản Đồ Đà Lạt</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125324.09726234786!2d108.35949927426559!3d11.945532558931736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317112fef20988bd%3A0xad5f228b672bf930!2zxJDDoCBM4bqhdCwgTMOibSDEkOG7k25nLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1729775000000!5m2!1svi!2s" 
+                    width="100%" 
+                    height="700" 
+                    style="border:0; border-radius: 8px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Bản đồ thành phố Đà Lạt"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="main-footer">
+        <div class="container footer-content">
+            <div class="contact-info">
+                <p><strong>Đà Lạt Travel</strong></p>
+                <p>123 Đường ABC, Phường 1, Đà Lạt, Lâm Đồng</p>
+                <p>Email: contact@dalattravel.com | Phone: (0263) 123 4567</p>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">ⓕ</a>
+                <a href="#" aria-label="Instagram">ⓘ</a>
+                <a href="#" aria-label="Youtube">▶</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Đà Lạt Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="location-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn" aria-label="Đóng">&times;</button>
+            <h2 id="modal-title"></h2>
+            <img id="modal-img" src="" alt="">
+            <p id="modal-description"></p>
+        </div>
+    </div>
+    
+    <div id="toast-notification" class="toast">
+        <p id="toast-message"></p>
+    </div>
+</body>
+<script src="service.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+</html>
