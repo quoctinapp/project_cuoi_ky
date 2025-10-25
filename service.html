@@ -6,6 +6,7 @@
     <title>Du Lịch Đà Lạt 2025 - Khám Phá Thành Phố Ngàn Hoa</title>
     <meta name="description" content="Khám phá các tour du lịch Đà Lạt trọn gói, địa điểm check-in hấp dẫn, và dịch vụ book phòng, vé, xe giá tốt nhất. Lên kế hoạch cho chuyến đi của bạn ngay hôm nay!">
     <link rel="stylesheet" href="service.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
 </head>
 <body>
     <header class="main-header">
@@ -43,51 +44,62 @@
         <section id="locations" class="fade-in-section">
             <div class="container">
                 <h2 class="section-title">Địa Điểm Nổi Bật</h2>
-                <div class="locations-grid">
-                    <article class="location-card" 
-                        data-title="Hồ Xuân Hương"
-                        data-img="image/ho_xuan_huong.png"
-                        data-description="Hồ Xuân Hương được ví như trái tim của Đà Lạt, là nơi lý tưởng để đi dạo, đạp vịt và tận hưởng không khí trong lành. Xung quanh hồ là những vườn hoa và rừng thông xanh mướt, tạo nên một khung cảnh thơ mộng.">
-                        <img src="image/ho_xuan_huong.png" loading="lazy" alt="Hồ Xuân Hương thơ mộng">
-                        <div class="location-card-content">
-                            <h3>Hồ Xuân Hương</h3>
-                            <p>Trái tim của thành phố, nơi lý tưởng cho các hoạt động ngoài trời và ngắm cảnh hoàng hôn.</p>
-                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
-                        </div>
-                    </article>
-                    <article class="location-card"
-                        data-title="Thung Lũng Tình Yêu"
-                        data-img="image/thung_lung_tinh_yeu.png"
-                        data-description="Đúng như tên gọi, Thung lũng Tình Yêu là một trong những địa điểm lãng mạn bậc nhất Đà Lạt. Nơi đây có cảnh quan thiên nhiên hữu tình với đồi thông, vườn hoa và hồ nước, là điểm đến yêu thích của các cặp đôi.">
-                        <img src="image/thung_lung_tinh_yeu.png" loading="lazy" alt="Cảnh quan tại Thung Lũng Tình Yêu">
-                        <div class="location-card-content">
-                            <h3>Thung Lũng Tình Yêu</h3>
-                            <p>Một trong những thắng cảnh lãng mạn nhất, với những đồi thông và vườn hoa rực rỡ.</p>
-                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
-                        </div>
-                    </article>
-                    <article class="location-card"
-                        data-title="Đồi Mộng Mơ"
-                        data-img="image/doi_mong_mo.png"
-                        data-description="Đồi Mộng Mơ là một khu du lịch với kiến trúc độc đáo, tái hiện Vạn Lý Trường Thành thu nhỏ và những ngôi nhà cổ. Đây là nơi giao thoa giữa vẻ đẹp thiên nhiên và văn hóa, mang đến trải nghiệm thú vị cho du khách.">
-                        <img src="image/doi_mong_mo.png" loading="lazy" alt="Một góc kiến trúc tại Đồi Mộng Mơ">
-                        <div class="location-card-content">
-                            <h3>Đồi Mộng Mơ</h3>
-                            <p>Khu du lịch với cảnh quan thơ mộng, kiến trúc độc đáo và nhiều hoạt động văn hóa.</p>
-                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
-                        </div>
-                    </article>
-                    <article class="location-card"
-                        data-title="Vườn Hoa Thành Phố"
-                        data-img="image/vuon_hoa_thanh_pho.png"
-                        data-description="Nơi quy tụ hàng trăm loài hoa khoe sắc quanh năm, Vườn hoa Thành phố là thiên đường cho những ai yêu thích vẻ đẹp của tự nhiên. Bạn có thể chiêm ngưỡng từ hoa hồng, cẩm tú cầu đến các loài lan quý hiếm.">
-                        <img src="image/vuon_hoa_thanh_pho.png" loading="lazy" alt="Các loài hoa khoe sắc tại Vườn Hoa Thành Phố">
-                        <div class="location-card-content">
-                            <h3>Vườn Hoa Thành Phố</h3>
-                            <p>Thiên đường của các loài hoa, nơi bạn có thể chiêm ngưỡng vẻ đẹp rực rỡ của tự nhiên.</p>
-                            <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
-                        </div>
-                    </article>
+                
+                <div class="swiper locations-swiper">
+                    <div class="swiper-wrapper">
+                        <article class="location-card swiper-slide" 
+                            data-title="Hồ Xuân Hương"
+                            data-img="image/ho_xuan_huong.png"
+                            data-description="Hồ Xuân Hương được ví như trái tim của Đà Lạt, là nơi lý tưởng để đi dạo, đạp vịt và tận hưởng không khí trong lành. Xung quanh hồ là những vườn hoa và rừng thông xanh mướt, tạo nên một khung cảnh thơ mộng.">
+                            <img src="image/ho_xuan_huong.png" loading="lazy" alt="Hồ Xuân Hương thơ mộng">
+                            <div class="location-card-content">
+                                <h3>Hồ Xuân Hương</h3>
+                                <p>Trái tim của thành phố, nơi lý tưởng cho các hoạt động ngoài trời và ngắm cảnh hoàng hôn.</p>
+                                <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                            </div>
+                        </article>
+                        
+                        <article class="location-card swiper-slide"
+                            data-title="Thung Lũng Tình Yêu"
+                            data-img="image/thung_lung_tinh_yeu.png"
+                            data-description="Đúng như tên gọi, Thung lũng Tình Yêu là một trong những địa điểm lãng mạn bậc nhất Đà Lạt. Nơi đây có cảnh quan thiên nhiên hữu tình với đồi thông, vườn hoa và hồ nước, là điểm đến yêu thích của các cặp đôi.">
+                            <img src="image/thung_lung_tinh_yeu.png" loading="lazy" alt="Cảnh quan tại Thung Lũng Tình Yêu">
+                            <div class="location-card-content">
+                                <h3>Thung Lũng Tình Yêu</h3>
+                                <p>Một trong những thắng cảnh lãng mạn nhất, với những đồi thông và vườn hoa rực rỡ.</p>
+                                <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                            </div>
+                        </article>
+                        
+                        <article class="location-card swiper-slide"
+                            data-title="Đồi Mộng Mơ"
+                            data-img="image/doi_mong_mo.png"
+                            data-description="Đồi Mộng Mơ là một khu du lịch với kiến trúc độc đáo, tái hiện Vạn Lý Trường Thành thu nhỏ và những ngôi nhà cổ. Đây là nơi giao thoa giữa vẻ đẹp thiên nhiên và văn hóa, mang đến trải nghiệm thú vị cho du khách.">
+                            <img src="image/doi_mong_mo.png" loading="lazy" alt="Một góc kiến trúc tại Đồi Mộng Mơ">
+                            <div class="location-card-content">
+                                <h3>Đồi Mộng Mơ</h3>
+                                <p>Khu du lịch với cảnh quan thơ mộng, kiến trúc độc đáo và nhiều hoạt động văn hóa.</p>
+                                <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                            </div>
+                        </article>
+                        
+                        <article class="location-card swiper-slide"
+                            data-title="Vườn Hoa Thành Phố"
+                            data-img="image/vuon_hoa_thanh_pho.png"
+                            data-description="Nơi quy tụ hàng trăm loài hoa khoe sắc quanh năm, Vườn hoa Thành phố là thiên đường cho những ai yêu thích vẻ đẹp của tự nhiên. Bạn có thể chiêm ngưỡng từ hoa hồng, cẩm tú cầu đến các loài lan quý hiếm.">
+                            <img src="image/vuon_hoa_thanh_pho.png" loading="lazy" alt="Các loài hoa khoe sắc tại Vườn Hoa Thành Phố">
+                            <div class="location-card-content">
+                                <h3>Vườn Hoa Thành Phố</h3>
+                                <p>Thiên đường của các loài hoa, nơi bạn có thể chiêm ngưỡng vẻ đẹp rực rỡ của tự nhiên.</p>
+                                <button class="btn btn-secondary open-modal-btn">Xem chi tiết</button>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
@@ -171,7 +183,7 @@
                                     <option value="">-- Chọn gói tour --</option>
                                     <option value="Gói Tiết Kiệm">Gói Tiết Kiệm (200.000đ/người)</option>
                                     <option value="Gói Tiêu Chuẩn">Gói Tiêu Chuẩn (1.250.000đ/người)</option>
-                                    <option value="Gói Cao Cấp">Gói Cao Cấp (40.000.000đ/người)</option>
+                                    <option value="Gói Cao Cấp">Gói Cao Cấp (10.000.000đ/người)</option>
                                 </select>
                             </div>
                             
@@ -275,4 +287,5 @@
 <script src="service.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 </html>

@@ -1,5 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
-     const firebaseConfig = {
+    const locationsSwiper = new Swiper('.locations-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    });
+    
+    const firebaseConfig = {
         apiKey: "AIzaSyDKS-bMlVv63I462R1uD4mjeplZMralzMU",
         authDomain: "test-a65cc.firebaseapp.com",
         databaseURL: "https://test-a65cc-default-rtdb.firebaseio.com",
