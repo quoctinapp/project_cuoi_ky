@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mã Giảm Giá - Đà Lạt Travel</title>
+    <link rel="stylesheet" href="css/coupons.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container main-nav">
+            <a href="index.html" class="logo">Đà Lạt Travel</a>
+            <a href="souvenir.html" class="back-btn">← Quay lại mua sắm</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>🎫 Mã Giảm Giá</h1>
+            <p>Tiết kiệm hơn với các ưu đãi đặc biệt từ Đà Lạt Travel</p>
+        </div>
+    </section>
+
+    <section class="coupons-section">
+        <div class="container">
+            <h2 class="section-title">Mã Khuyến Mãi Hiện Có</h2>
+            <div class="coupons-grid">
+                <div class="coupon-card special-card">
+                    <div class="coupon-badge">HOT 🔥</div>
+                    <div class="coupon-header">
+                        <div class="coupon-icon">🎉</div>
+                        <div class="coupon-discount">GIẢM 50.000đ</div>
+                        <div class="coupon-description">Cho đơn hàng từ 200.000đ</div>
+                    </div>
+                    <div class="coupon-body">
+                        <div class="coupon-code-container">
+                            <div class="coupon-code-label">Mã giảm giá:</div>
+                            <div class="coupon-code">
+                                <span>DALAT2025</span>
+                                <button class="copy-btn" onclick="copyCode('DALAT2025', this)">Sao chép</button>
+                            </div>
+                        </div>
+                        <ul class="coupon-details">
+                            <li>Giảm ngay 50.000đ cho mọi đơn hàng</li>
+                            <li>Áp dụng cho tất cả sản phẩm</li>
+                            <li>Không giới hạn số lượng sử dụng</li>
+                            <li>Mã đặc biệt năm 2025</li>
+                        </ul>
+                        <div class="coupon-expiry">⏰ Có hiệu lực đến 31/12/2025</div>
+                    </div>
+                </div>
+
+                <div class="coupon-card">
+                    <div class="coupon-badge">MỚI</div>
+                    <div class="coupon-header">
+                        <div class="coupon-icon">💰</div>
+                        <div class="coupon-discount">GIẢM 10%</div>
+                        <div class="coupon-description">Giảm giá theo phần trăm</div>
+                    </div>
+                    <div class="coupon-body">
+                        <div class="coupon-code-container">
+                            <div class="coupon-code-label">Mã giảm giá:</div>
+                            <div class="coupon-code">
+                                <span>GIAM10</span>
+                                <button class="copy-btn" onclick="copyCode('GIAM10', this)">Sao chép</button>
+                            </div>
+                        </div>
+                        <ul class="coupon-details">
+                            <li>Giảm 10% tổng giá trị đơn hàng</li>
+                            <li>Áp dụng cho đơn từ 300.000đ</li>
+                            <li>Tiết kiệm tối đa khi mua nhiều</li>
+                            <li>Dành cho khách hàng mới</li>
+                        </ul>
+                        <div class="coupon-expiry">⏰ Có hiệu lực đến 30/11/2025</div>
+                    </div>
+                </div>
+
+                <div class="coupon-card">
+                    <div class="coupon-badge">VIP</div>
+                    <div class="coupon-header">
+                        <div class="coupon-icon">⭐</div>
+                        <div class="coupon-discount">GIẢM 20%</div>
+                        <div class="coupon-description">Ưu đãi khách hàng thân thiết</div>
+                    </div>
+                    <div class="coupon-body">
+                        <div class="coupon-code-container">
+                            <div class="coupon-code-label">Mã giảm giá:</div>
+                            <div class="coupon-code">
+                                <span>GIAM20</span>
+                                <button class="copy-btn" onclick="copyCode('GIAM20', this)">Sao chép</button>
+                            </div>
+                        </div>
+                        <ul class="coupon-details">
+                            <li>Giảm 20% tổng đơn hàng</li>
+                            <li>Áp dụng cho đơn từ 500.000đ</li>
+                            <li>Ưu đãi đặc biệt cuối năm</li>
+                            <li>Kết hợp được với quà tặng</li>
+                        </ul>
+                        <div class="coupon-expiry">⏰ Có hiệu lực đến 31/12/2025</div>
+                    </div>
+                </div>
+
+                <div class="coupon-card">
+                    <div class="coupon-header">
+                        <div class="coupon-icon">🚚</div>
+                        <div class="coupon-discount">FREESHIP</div>
+                        <div class="coupon-description">Miễn phí vận chuyển</div>
+                    </div>
+                    <div class="coupon-body">
+                        <div class="coupon-code-container">
+                            <div class="coupon-code-label">Mã giảm giá:</div>
+                            <div class="coupon-code">
+                                <span>FREESHIP</span>
+                                <button class="copy-btn" onclick="copyCode('FREESHIP', this)">Sao chép</button>
+                            </div>
+                        </div>
+                        <ul class="coupon-details">
+                            <li>Giảm 30.000đ phí vận chuyển</li>
+                            <li>Áp dụng toàn quốc</li>
+                            <li>Không giới hạn giá trị đơn hàng</li>
+                            <li>Giao hàng nhanh trong 2-3 ngày</li>
+                        </ul>
+                        <div class="coupon-expiry">⏰ Có hiệu lực đến 31/01/2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 12px; margin-top: 40px; text-align: center;">
+                <h3 style="color: var(--dark-color); margin-bottom: 15px;">📋 Hướng Dẫn Sử Dụng</h3>
+                <p style="color: #666; line-height: 1.8;">
+                    1️⃣ Chọn sản phẩm và thêm vào giỏ hàng<br>
+                    2️⃣ Nhấn vào biểu tượng giỏ hàng 🛒<br>
+                    3️⃣ Nhập mã giảm giá vào ô "Nhập mã giảm giá"<br>
+                    4️⃣ Nhấn "Áp dụng" và hoàn tất đặt hàng
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="toast" id="toast"></div>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="contact-info">
+                <p><strong>Đà Lạt Travel</strong></p>
+                <p>123 Đường ABC, Phường 1, Đà Lạt, Lâm Đồng</p>
+                <p>Email: contact@dalattravel.com | Phone: (0263) 123 4567</p>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">ⓕ</a>
+                <a href="#" aria-label="Instagram">ⓘ</a>
+                <a href="#" aria-label="Youtube">▶</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Đà Lạt Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="js/coupons.js"></script>
+</html>

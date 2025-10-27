@@ -56,6 +56,25 @@ body {
     font-size: 1.5rem;
 }
 
+#navigateCouponsBtn{
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    background: green;
+    color: white;
+    border: none;
+    outline: none;
+    width: 160px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    border-radius: 10px;
+}
+
+#navigateCouponsBtn:hover{
+    transform: translateY(-2px);
+}
+
 .cart-count {
     position: absolute;
     top: -8px;
