@@ -198,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // Firebase configuration
     const firebaseConfig = {
         apiKey: "AIzaSyDKS-bMlVv63I462R1uD4mjeplZMralzMU",
         authDomain: "test-a65cc.firebaseapp.com",
@@ -212,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
-    // Menu toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
@@ -220,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -237,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intersection Observer
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -464,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let bookingData = {};
         const inputs = bookingForm.querySelectorAll('input[required], select[required]');
 
-        inputs.forEach(input => {
+        inputs.forEach((input) => {
             if (!input.value.trim()) {
                 isValid = false;
                 input.style.borderColor = 'red';
