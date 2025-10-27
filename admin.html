@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Đà Lạt Travel</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
     <div class="login-container" id="loginPage">
@@ -31,7 +31,7 @@
     </div>
 
     <div class="admin-container" id="adminDashboard">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-logo">
                 <h2>Đà Lạt Travel</h2>
                 <p>Admin Panel</p>
@@ -46,11 +46,11 @@
                     </div>
                     <div class="menu-item" data-page="bookings">
                         <span class="menu-icon">📋</span>
-                        <span>Quản lý đặt chỗ</span>
+                        <span>Quản lý Tour</span>
                     </div>
-                    <div class="menu-item" data-page="customers">
-                        <span class="menu-icon">👥</span>
-                        <span>Khách hàng</span>
+                    <div class="menu-item" data-page="orders">
+                        <span class="menu-icon">🛍️</span>
+                        <span>Đơn hàng quà</span>
                     </div>
                 </div>
             </nav>
@@ -68,60 +68,101 @@
         </aside>
 
         <main class="main-content">
-            <div class="content-header">
-                <h1>Dashboard</h1>
-                <p>Chào mừng trở lại, Administrator</p>
+            <div class="data-section active" id="dashboardSection">
+                <div class="content-header">
+                    <h1>Dashboard</h1>
+                    <p>Chào mừng trở lại, Administrator</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Tổng đặt tour</h3>
+                        <div class="stat-value" id="totalBookings">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Đơn hàng quà</h3>
+                        <div class="stat-value" id="totalOrders">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Hôm nay</h3>
+                        <div class="stat-value" id="todayTotal">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Tuần này</h3>
+                        <div class="stat-value" id="weekTotal">0</div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>📊 Thống kê 7 ngày gần nhất</h3>
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>🥧 Phân bố gói tour</h3>
+                        <canvas id="packageChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>💰 Doanh thu đơn hàng theo ngày</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>📍 Địa điểm phổ biến</h3>
+                        <canvas id="destinationChart"></canvas>
+                    </div>
+                </div>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>Tổng đặt chỗ</h3>
-                    <div class="stat-value" id="totalBookings">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Hôm nay</h3>
-                    <div class="stat-value" id="todayBookings">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Tuần này</h3>
-                    <div class="stat-value" id="weekBookings">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Tháng này</h3>
-                    <div class="stat-value" id="monthBookings">0</div>
-                </div>
-            </div>
-
-            <div class="bookings-section">
+            <div class="data-section" id="bookingsSection">
                 <div class="section-header">
-                    <h2>Danh sách đặt chỗ</h2>
+                    <h2>Danh sách đặt tour</h2>
                     <div class="search-filter">
-                        <input type="text" class="search-box" id="searchBox" placeholder="🔍 Tìm kiếm theo tên, email, số điện thoại...">
+                        <input type="text" class="search-box" id="searchBoxBookings" placeholder="🔍 Tìm kiếm...">
                         <select class="filter-select" id="filterPackage">
                             <option value="">Tất cả gói tour</option>
                             <option value="Gói Tiết Kiệm">Gói Tiết Kiệm</option>
                             <option value="Gói Tiêu Chuẩn">Gói Tiêu Chuẩn</option>
                             <option value="Gói Cao Cấp">Gói Cao Cấp</option>
                         </select>
-                        <select class="filter-select" id="filterDestination">
-                            <option value="">Tất cả địa điểm</option>
-                            <option value="Hồ Xuân Hương">Hồ Xuân Hương</option>
-                            <option value="Thung Lũng Tình Yêu">Thung Lũng Tình Yêu</option>
-                            <option value="Đồi Mộng Mơ">Đồi Mộng Mơ</option>
-                            <option value="Vườn Hoa Thành Phố">Vườn Hoa Thành Phố</option>
+                    </div>
+                </div>
+                <div id="bookingsTableContent">
+                    <div class="loading">Đang tải dữ liệu...</div>
+                </div>
+            </div>
+
+            <div class="data-section" id="ordersSection">
+                <div class="section-header">
+                    <h2>Danh sách đơn hàng quà lưu niệm</h2>
+                    <div class="search-filter">
+                        <input type="text" class="search-box" id="searchBoxOrders" placeholder="🔍 Tìm kiếm...">
+                        <select class="filter-select" id="filterStatus">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="Chờ xử lý">Chờ xử lý</option>
+                            <option value="Đang xử lý">Đang xử lý</option>
+                            <option value="Hoàn thành">Hoàn thành</option>
                         </select>
                     </div>
                 </div>
-
-                <div id="tableContent">
+                <div id="ordersTableContent">
                     <div class="loading">Đang tải dữ liệu...</div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    <script src="admin.js"></script>
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chi tiết đơn hàng</h2>
+                <button class="close-modal" id="closeOrderModal">&times;</button>
+            </div>
+            <div id="orderDetailContent"></div>
+        </div>
+    </div>
 </body>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script src="js/admin.js"></script>
 </html>

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         },
     });
-    
+
     const firebaseConfig = {
         apiKey: "AIzaSyDKS-bMlVv63I462R1uD4mjeplZMralzMU",
         authDomain: "test-a65cc.firebaseapp.com",

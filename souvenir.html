@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/souvenir.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container main-nav">
+            <a href="index.html" class="logo">Đà Lạt Travel</a>
+            <nav class="nav_container">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#hero">Home</a></li>
+                    <li><a href="index.html#locations">Địa điểm</a></li>
+                    <li><a href="index.html#pricing">Gói tour</a></li>
+                    <li><a href="souvenir.html">Quà lưu niệm</a></li>
+                    <li><a href="index.html#services">Dịch vụ</a></li>
+                    <li><a href="index.html#footer">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="cart-icon" id="cartIcon">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="menu-toggle" id="menuToggle">☰</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🎁 Quà Lưu Niệm Đà Lạt</h1>
+            <p>Mang về những món quà đặc biệt từ thành phố ngàn hoa</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Giỏ hàng</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">Giỏ hàng trống</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Tổng cộng:</span>
+                <span id="cartTotal">0đ</span>
+            </div>
+            <button class="btn-checkout" id="checkoutBtn">Đặt hàng</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Thông Tin Đặt Hàng</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            
+            <div class="order-summary">
+                <h3>Đơn hàng của bạn</h3>
+                <div id="orderSummary"></div>
+                <div class="summary-total">
+                    <span>Tổng tiền:</span>
+                    <span id="orderTotal">0đ</span>
+                </div>
+            </div>
+
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="customerName">Họ và tên *</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Số điện thoại *</label>
+                    <input type="tel" id="customerPhone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerEmail">Email</label>
+                    <input type="email" id="customerEmail">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerAddress">Địa chỉ giao hàng *</label>
+                    <textarea id="customerAddress" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="paymentMethod">Phương thức thanh toán *</label>
+                    <select id="paymentMethod" required>
+                        <option value="">-- Chọn phương thức --</option>
+                        <option value="COD">Thanh toán khi nhận hàng (COD)</option>
+                        <option value="Bank">Chuyển khoản ngân hàng</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderNote">Ghi chú đơn hàng</label>
+                    <textarea id="orderNote" rows="2"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Xác nhận đặt hàng</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="contact-info">
+                <p><strong>Đà Lạt Travel</strong></p>
+                <p>123 Đường ABC, Phường 1, Đà Lạt, Lâm Đồng</p>
+                <p>Email: contact@dalattravel.com | Phone: (0263) 123 4567</p>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">ⓕ</a>
+                <a href="#" aria-label="Instagram">ⓘ</a>
+                <a href="#" aria-label="Youtube">▶</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Đà Lạt Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script src="js/souvenir.js"></script>
+</html>
