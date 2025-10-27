@@ -28,22 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     updateUserUI();
     document.getElementById('souvenirLink').style.display = loggedInUser ? 'block' : 'none';
     document.getElementById('serviceLink').style.display = loggedInUser ? 'block' : 'none';
-    const serviceModule = document.querySelector(".service-module");
-
+    
+    const serviceModule = document.getElementById("services");
     if (serviceModule && !localStorage.getItem("loggedInUser")) {
-        serviceModule.innerHTML = `
-            <span style="
-                display: block;
-                color: red;
-                text-align: center;
-                padding: 20px;
-                font-weight: bold;
-            ">
-                ⚠️ Bạn cần đăng nhập để sử dụng chức năng này
-            </span>
-        `;
+        serviceModule.style.display = "none";
     }
-
 
     btnLogin.addEventListener('click', () => {
         authModal.classList.add('active');
