@@ -1,4 +1,175 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const btnLogin = document.getElementById('btnLogin');
+    const btnLogout = document.getElementById('btnLogout');
+    const userInfo = document.getElementById('userInfo');
+    const userNameDisplay = document.getElementById('userNameDisplay');
+    const authModal = document.getElementById('authModal');
+    const closeAuthModal = document.getElementById('closeAuthModal');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const authTitle = document.getElementById('authTitle');
+    const toggleAuthText = document.getElementById('toggleAuthText');
+    const bookingName = document.getElementById('booking-name');
+    const bookingEmail = document.getElementById('booking-email');
+    const bookingPhone = document.getElementById('booking-phone');
+    const bookBtn = document.querySelector('.booking-form .btn');
+
+    function updateUserUI() {
+        if (loggedInUser) {
+            btnLogin.style.display = 'none';
+            userInfo.style.display = 'flex';
+            userNameDisplay.textContent = loggedInUser.name;
+        } else {
+            btnLogin.style.display = 'inline-block';
+            userInfo.style.display = 'none';
+        }
+    }
+    updateUserUI();
+    document.getElementById('souvenirLink').style.display = loggedInUser ? 'block' : 'none';
+    document.getElementById('serviceLink').style.display = loggedInUser ? 'block' : 'none';
+    const serviceModule = document.querySelector(".service-module");
+
+    if (serviceModule && !localStorage.getItem("loggedInUser")) {
+        serviceModule.innerHTML = `
+            <span style="
+                display: block;
+                color: red;
+                text-align: center;
+                padding: 20px;
+                font-weight: bold;
+            ">
+                ⚠️ Bạn cần đăng nhập để sử dụng chức năng này
+            </span>
+        `;
+    }
+
+
+    btnLogin.addEventListener('click', () => {
+        authModal.classList.add('active');
+        showLoginForm();
+    });
+
+    closeAuthModal.addEventListener('click', () => {
+        authModal.classList.remove('active');
+    });
+
+    toggleAuthText.addEventListener('click', (e) => {
+        if (e.target.id === 'toggleAuthLink') {
+            e.preventDefault();
+            if (loginForm.style.display === 'none') {
+                showLoginForm();
+            } else {
+                showRegisterForm();
+            }
+        }
+    });
+
+    function showLoginForm() {
+        loginForm.style.display = 'flex';
+        registerForm.style.display = 'none';
+        authTitle.textContent = 'Đăng nhập';
+        toggleAuthText.innerHTML = `Chưa có tài khoản? <a href="#" id="toggleAuthLink">Đăng ký ngay</a>`;
+    }
+
+    function showRegisterForm() {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'flex';
+        authTitle.textContent = 'Đăng ký';
+        toggleAuthText.innerHTML = `Đã có tài khoản? <a href="#" id="toggleAuthLink">Đăng nhập</a>`;
+    }
+
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('registerName').value.trim();
+        const email = document.getElementById('registerEmail').value.trim();
+        const password = document.getElementById('registerPassword').value.trim();
+        const phone = document.getElementById('registerPhone').value.trim();
+
+        if (!name || !email || !password || !phone) {
+            alert('Vui lòng điền đầy đủ thông tin!');
+            return;
+        }
+
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        if (users.some(u => u.email === email)) {
+            alert('Email này đã được đăng ký!');
+            return;
+        }
+
+        users.push({ name, email, password, phone });
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Đăng ký thành công! Vui lòng đăng nhập.');
+        
+        registerForm.reset();
+        showLoginForm();
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+
+        if (!email || !password) {
+            alert('Vui lòng điền đầy đủ thông tin!');
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(u => u.email === email && u.password === password);
+        
+        if (!user) {
+            alert('Email hoặc mật khẩu không đúng!');
+            return;
+        }
+
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+        alert('Đăng nhập thành công!');
+        location.reload();
+    });
+
+    btnLogout.addEventListener('click', () => {
+        if (confirm('Bạn có chắc muốn đăng xuất?')) {
+            localStorage.removeItem('loggedInUser');
+            location.reload();
+        }
+    });
+
+    if (loggedInUser) {
+        if (bookingName) {
+            bookingName.value = loggedInUser.name;
+            bookingName.readOnly = true;
+            bookingName.disabled = true;
+            bookingName.style.backgroundColor = '#f5f5f5';
+            bookingName.style.cursor = 'not-allowed';
+        }
+        if (bookingEmail) {
+            bookingEmail.value = loggedInUser.email;
+            bookingEmail.readOnly = true;
+            bookingEmail.disabled = true;
+            bookingEmail.style.backgroundColor = '#f5f5f5';
+            bookingEmail.style.cursor = 'not-allowed';
+        }
+        if (bookingPhone) {
+            bookingPhone.value = loggedInUser.phone;
+            bookingPhone.readOnly = true;
+            bookingPhone.disabled = true;
+            bookingPhone.style.backgroundColor = '#f5f5f5';
+            bookingPhone.style.cursor = 'not-allowed';
+        }
+    }
+
+    if (bookBtn) {
+        bookBtn.addEventListener('click', (e) => {
+            if (!loggedInUser) {
+                e.preventDefault();
+                alert('Vui lòng đăng nhập để đặt tour!');
+                authModal.classList.add('active');
+                showLoginForm();
+            }
+        });
+    }
+
     const locationsSwiper = new Swiper('.locations-swiper', {
         slidesPerView: 1,
         spaceBetween: 20,
@@ -27,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
+    // Firebase configuration
     const firebaseConfig = {
         apiKey: "AIzaSyDKS-bMlVv63I462R1uD4mjeplZMralzMU",
         authDomain: "test-a65cc.firebaseapp.com",
@@ -40,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
+    // Menu toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
@@ -47,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -63,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Intersection Observer
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -84,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
     
+    // Modal functionality
     const modal = document.getElementById('location-modal');
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const openModalBtns = document.querySelectorAll('.open-modal-btn');
@@ -127,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Toast notification
     const toast = document.getElementById('toast-notification');
     const toastMessage = document.getElementById('toast-message');
     let toastTimeout;
@@ -142,10 +319,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000); 
     };
 
-    const packagePrices = { "Gói Tiết Kiệm": 200000, "Gói Tiêu Chuẩn": 1250000, "Gói Cao Cấp": 10000000 };
-    const destinationPrices = { "Hồ Xuân Hương": 50000, "Thung Lũng Tình Yêu": 300000, "Đồi Mộng Mơ": 250000, "Vườn Hoa Thành Phố": 200000 };
-    const vehiclePrices = { "Xe đoàn": 20000, "Xe riêng 4 chỗ": 800000, "Xe riêng 7 chỗ": 1200000, "Xe shuttle": 500000 };
-    const roomPrices = { "Phổ thông": 200000, "Thương gia": 1000000, "Tổng thống": 2000000 };
+    // Pricing calculations
+    const packagePrices = { 
+        "Gói Tiết Kiệm": 200000, 
+        "Gói Tiêu Chuẩn": 1250000, 
+        "Gói Cao Cấp": 10000000 
+    };
+    
+    const destinationPrices = { 
+        "Hồ Xuân Hương": 50000, 
+        "Thung Lũng Tình Yêu": 300000, 
+        "Đồi Mộng Mơ": 250000, 
+        "Vườn Hoa Thành Phố": 200000 
+    };
+    
+    const vehiclePrices = { 
+        "Xe đoàn": 20000, 
+        "Xe riêng 4 chỗ": 800000, 
+        "Xe riêng 7 chỗ": 1200000, 
+        "Xe shuttle": 500000 
+    };
+    
+    const roomPrices = { 
+        "Phổ thông": 200000, 
+        "Thương gia": 1000000, 
+        "Tổng thống": 2000000 
+    };
 
     function getSeasonDiscount(date) {
         if (!date) return { season: "Bình thường", discount: 0 };
@@ -160,8 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bookingForm = document.querySelector('.booking-form');
     const watch_before = document.getElementById("watch_before");
-
     const calculationResult = document.getElementById('calculation-result');
+    
     if (bookingForm) {
         const packageSelect = bookingForm.querySelector('#booking-package');
         const destinationSelect = bookingForm.querySelector('#booking-destination');
@@ -169,7 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const roomSelect = bookingForm.querySelector('#booking-room');
         const guestsInput = bookingForm.querySelector('#booking-guests');
         const dateInput = bookingForm.querySelector('#booking-date');
-
         const resultDisplay = document.getElementById('result-display');
 
         function updatePriceEstimate() {

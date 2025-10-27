@@ -5,10 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Du Lịch Đà Lạt 2025 - Khám Phá Thành Phố Ngàn Hoa</title>
     <meta name="description" content="Khám phá các tour du lịch Đà Lạt trọn gói, địa điểm check-in hấp dẫn, và dịch vụ book phòng, vé, xe giá tốt nhất. Lên kế hoạch cho chuyến đi của bạn ngay hôm nay!">
-    <link rel="stylesheet" href="css/service.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
 </head>
 <body>
+    <div class="modal" id="authModal">
+        <div class="modal-content" style="max-width:400px;">
+            <button class="modal-close" id="closeAuthModal">&times;</button>
+            <h2 id="authTitle">Đăng nhập</h2>
+            <form id="loginForm" class="auth-form">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Mật khẩu" required>
+                <button type="submit" class="btn">Đăng nhập</button>
+            </form>
+
+            <form id="registerForm" class="auth-form" style="display:none;">
+                <input type="text" id="registerName" placeholder="Họ và tên" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Mật khẩu" required>
+                <input type="text" id="registerPhone" placeholder="Số điện thoại" required>
+                <button type="submit" class="btn">Đăng ký</button>
+            </form>
+
+            <p style="text-align:center; margin-top:10px;">
+                <span id="toggleAuthText">Chưa có tài khoản? 
+                    <a href="#" id="toggleAuthLink">Đăng ký ngay</a>
+                </span>
+            </p>
+        </div>
+    </div>
     <header class="main-header">
         <div class="container main-nav">
             <a href="/" class="logo" title="Trang chủ">Đà Lạt Travel</a>
@@ -17,13 +42,19 @@
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#locations">Địa điểm</a></li>
                     <li><a href="#pricing">Gói tour</a></li>
-                    <li><a href="souvenir.html">Quà lưu niệm</a></li>
-                    <li><a href="#services">Dịch vụ</a></li>
+                    <li id="souvenirLink"><a href="souvenir.html">Quà lưu niệm</a></li>
+                    <li id="serviceLink"><a href="#services">Dịch vụ</a></li>
                     <li><a href="https://sanpham.starglobal3d.com/smart-tourism-3d/da-lat/">Trải nghiệm 3D</a></li>
                     <li><a href="#footer">Liên hệ</a></li>
-                    <!--Phần đăng nhập-->
                 </ul>
             </nav>
+            <div id="userSection">
+                <button id="btnLogin" class="btn btn-secondary">Đăng nhập</button>
+                <div id="userInfo" style="display:none;">
+                    👤 <span id="userNameDisplay"></span>
+                    <button id="btnLogout" class="btn btn-secondary" style="margin-left:10px;">Đăng xuất</button>
+                </div>
+            </div>
             <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">&#9776;</div>
         </div>
     </header>
@@ -286,7 +317,7 @@
         <p id="toast-message"></p>
     </div>
 </body>
-<script src="js/service.js"></script>
+<script src="js/script.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>

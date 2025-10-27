@@ -651,6 +651,37 @@ section {
     background: var(--primary-color);
 }
 
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.auth-form input {
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.25s ease;
+}
+
+.auth-form input:focus {
+    border-color: var(--primary-color);
+}
+
+#userSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#userInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 @media (max-width: 1024px) {
     .section-title {
         font-size: 2rem;
