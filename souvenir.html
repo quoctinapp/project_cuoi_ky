@@ -52,6 +52,13 @@
         <div class="cart-items" id="cartItems">
             <div class="empty-cart">Giỏ hàng trống</div>
         </div>
+
+        <div class="coupon-section">
+            <input type="text" id="couponInput" placeholder="Nhập mã giảm giá">
+            <button class="btn-apply-coupon" id="applyCouponBtn">Áp dụng</button>
+        </div>
+        <div class="coupon-message" id="couponMessage"></div>
+
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Tổng cộng:</span>
@@ -71,11 +78,13 @@
             <div class="order-summary">
                 <h3>Đơn hàng của bạn</h3>
                 <div id="orderSummary"></div>
+                <div id="orderDiscount"></div> <!-- 👈 Thêm dòng này -->
                 <div class="summary-total">
                     <span>Tổng tiền:</span>
                     <span id="orderTotal">0đ</span>
                 </div>
             </div>
+
 
             <form id="checkoutForm">
                 <div class="form-group">

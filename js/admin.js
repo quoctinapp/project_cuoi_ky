@@ -57,7 +57,6 @@ function showDashboard() {
     loadAllData();
 }
 
-// Navigation
 document.querySelectorAll('.menu-item').forEach(item => {
     item.addEventListener('click', () => {
         const page = item.dataset.page;
@@ -203,6 +202,7 @@ function displayOrders(orders) {
                                     <td>
                                         <button class="btn-view" onclick="viewOrder('${order.id}')">Xem</button>
                                         <button class="btn-delete" onclick="deleteOrder('${order.id}')">Xóa</button>
+                                        ${order.status === 'Chờ xử lý' ? '<button class="btn-complete" onclick="completeOrder(\'' + order.id + '\')">Hoàn thành</button>' : ''}
                                     </td>
                                 </tr>
                             `).join('')}
@@ -210,6 +210,18 @@ function displayOrders(orders) {
                     </table>
                 </div>
             `;
+}
+
+function completeOrder(id) {
+    if (confirm('Bạn có chắc chắn muốn hoàn thành đơn hàng này?')) {
+        database.ref('orders/' + id).update({
+            status: 'Hoàn thành'
+        })
+        .then(() => {
+            alert('Đã hoàn thành đơn hàng thành công!');
+        })
+        .catch((error) => alert('Có lỗi: ' + error.message));
+    }
 }
 
 function deleteBooking(id) {
@@ -263,6 +275,14 @@ function viewOrder(id) {
                                 <strong>${(item.price * item.quantity).toLocaleString()}đ</strong>
                             </div>
                         `).join('')}
+
+                        ${order.couponApplied ? `
+                            <div class="item-row" style="margin-top: 10px;">
+                                <span style="color: #28a745;">Mã giảm giá: <strong>${order.couponApplied}</strong></span>
+                                <strong style="color: #28a745;">- ${order.discount.toLocaleString()}đ</strong>
+                            </div>
+                        ` : ''}
+
                         <div class="item-row" style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #ddd;">
                             <strong style="color: #667eea;">TỔNG CỘNG:</strong>
                             <strong style="color: #667eea; font-size: 18px;">${order.totalAmount.toLocaleString()}đ</strong>

@@ -1,4 +1,3 @@
-// Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyDKS-bMlVv63I462R1uD4mjeplZMralzMU",
     authDomain: "test-a65cc.firebaseapp.com",
@@ -28,33 +27,77 @@ const products = [
 ];
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let appliedCoupon = null;
+const coupons = {
+    'DALAT2025': { discount: 50000, type: 'fixed', description: 'Giảm 50.000đ' },
+    'GIAM10': { discount: 10, type: 'percent', description: 'Giảm 10%' },
+    'GIAM20': { discount: 20, type: 'percent', description: 'Giảm 20%' },
+    'FREESHIP': { discount: 30000, type: 'fixed', description: 'Giảm 30.000đ phí ship' }
+};
+
+function calculateDiscount(total, coupon) {
+    if (coupon.type === 'fixed') {
+        return Math.min(coupon.discount, total);
+    } else if (coupon.type === 'percent') {
+        return Math.floor(total * coupon.discount / 100);
+    }
+    return 0;
+}
+
+function applyCoupon() {
+    const couponInput = document.getElementById('couponInput');
+    const couponCode = couponInput.value.trim().toUpperCase();
+
+    if (!couponCode) {
+        showCouponMessage('Vui lòng nhập mã giảm giá', 'error');
+        return;
+    }
+
+    if (cart.length === 0) {
+        showCouponMessage('Giỏ hàng trống!', 'error');
+        return;
+    }
+
+    const coupon = coupons[couponCode];
+    if (!coupon) {
+        showCouponMessage('Mã giảm giá không hợp lệ!', 'error');
+        return;
+    }
+
+    appliedCoupon = coupon;
+    showCouponMessage(`Áp dụng thành công: ${coupon.description}`, 'success');
+    updateCartUI();
+    couponInput.value = '';
+}
+
+function showCouponMessage(message, type) {
+    const couponMessage = document.getElementById('couponMessage');
+    couponMessage.textContent = message;
+    couponMessage.className = `coupon-message show ${type}`;
+    setTimeout(() => couponMessage.classList.remove('show'), 3000);
+}
 
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
-    grid.innerHTML = products.map(product => `
-                <div class="product-card">
-                    <div class="product-image">${product.icon}</div>
-                    <div class="product-info">
-                        <div class="product-name">${product.name}</div>
-                        <div class="product-description">${product.description}</div>
-                        <div class="product-price">${product.price.toLocaleString()}đ</div>
-                        <button class="btn btn-primary" onclick="addToCart(${product.id})">
-                            Thêm vào giỏ
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+    grid.innerHTML = products.map(product => 
+        `<div class="product-card">
+            <div class="product-image">${product.icon}</div>
+            <div class="product-info">
+                <div class="product-name">${product.name}</div>
+                <div class="product-description">${product.description}</div>
+                <div class="product-price">${product.price.toLocaleString()}đ</div>
+                <button class="btn btn-primary" onclick="addToCart(${product.id})">
+                    Thêm vào giỏ
+                </button>
+            </div>
+        </div>`).join('');
 }
 
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const existingItem = cart.find(item => item.id === productId);
 
-    if (existingItem) {
-        existingItem.quantity++;
-    } else {
-        cart.push({ ...product, quantity: 1 });
-    }
+    existingItem ? existingItem.quantity++ : cart.push({ ...product, quantity: 1 });
 
     saveCart();
     updateCartUI();
@@ -67,7 +110,13 @@ function updateCartUI() {
     const cartTotal = document.getElementById('cartTotal');
 
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    let discount = 0;
+    if (appliedCoupon) {
+        discount = calculateDiscount(totalPrice, appliedCoupon);
+        totalPrice -= discount;
+    }
 
     cartCount.textContent = totalItems;
     cartTotal.textContent = totalPrice.toLocaleString() + 'đ';
@@ -144,20 +193,42 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
 
     const orderSummary = document.getElementById('orderSummary');
     const orderTotal = document.getElementById('orderTotal');
+    const orderDiscount = document.getElementById('orderDiscount');
 
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let discount = 0;
 
     orderSummary.innerHTML = cart.map(item => `
-                <div class="summary-item">
-                    <span>${item.name} x ${item.quantity}</span>
-                    <span>${(item.price * item.quantity).toLocaleString()}đ</span>
-                </div>
-            `).join('');
+        <div class="summary-item">
+            <span>${item.name} x ${item.quantity}</span>
+            <span>${(item.price * item.quantity).toLocaleString()}đ</span>
+        </div>
+    `).join('');
+
+    if (appliedCoupon) {
+        discount = calculateDiscount(total, appliedCoupon);
+        orderDiscount.innerHTML = `
+            <div class="summary-item discount-row">
+                <span>Giảm giá (${appliedCoupon.description})</span>
+                <span>-${discount.toLocaleString()}đ</span>
+            </div>
+        `;
+        total -= discount;
+    } else {
+        orderDiscount.innerHTML = '';
+    }
 
     orderTotal.textContent = total.toLocaleString() + 'đ';
 
     document.getElementById('checkoutModal').classList.add('active');
     document.getElementById('cartSidebar').classList.remove('active');
+});
+
+document.getElementById('applyCouponBtn').addEventListener('click', applyCoupon);
+document.getElementById('couponInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        applyCoupon();
+    }
 });
 
 document.getElementById('closeModal').addEventListener('click', () => {
@@ -167,6 +238,9 @@ document.getElementById('closeModal').addEventListener('click', () => {
 document.getElementById('checkoutForm').addEventListener('submit', (e) => {
     e.preventDefault();
 
+    const originalTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const discountValue = appliedCoupon ? calculateDiscount(originalTotal, appliedCoupon) : 0;
+
     const orderData = {
         customerName: document.getElementById('customerName').value,
         customerPhone: document.getElementById('customerPhone').value,
@@ -175,9 +249,11 @@ document.getElementById('checkoutForm').addEventListener('submit', (e) => {
         paymentMethod: document.getElementById('paymentMethod').value,
         orderNote: document.getElementById('orderNote').value,
         items: cart,
-        totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        totalAmount: originalTotal - discountValue,
+        discount: discountValue,
+        couponApplied: appliedCoupon ? appliedCoupon.description : null,
         timestamp: new Date().toISOString(),
-        status: 'Chờ xử lý'
+        status: 'Chờ xử lý',
     };
 
     const newOrderRef = database.ref('orders').push();
@@ -189,6 +265,7 @@ document.getElementById('checkoutForm').addEventListener('submit', (e) => {
             updateCartUI();
             document.getElementById('checkoutModal').classList.remove('active');
             document.getElementById('checkoutForm').reset();
+            appliedCoupon = null;
         })
         .catch((error) => {
             console.error('Lỗi:', error);

@@ -372,8 +372,7 @@ tbody tr:hover {
     background: #f8f9ff;
 }
 
-.btn-delete,
-.btn-view {
+.btn-delete, .btn-view, .btn-complete {
     padding: 8px 16px;
     border: none;
     border-radius: 6px;
@@ -387,6 +386,11 @@ tbody tr:hover {
 .btn-delete {
     background: #fee;
     color: #c33;
+}
+
+.btn-complete {
+    background: green;
+    color: white;
 }
 
 .btn-delete:hover {
