@@ -281,6 +281,14 @@ body {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
 }
 
+.coupon-instruction{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 1.8rem;

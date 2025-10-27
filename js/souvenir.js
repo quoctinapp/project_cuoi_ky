@@ -32,7 +32,9 @@ const coupons = {
     'DALAT2025': { discount: 50000, type: 'fixed', description: 'Giảm 50.000đ' },
     'GIAM10': { discount: 10, type: 'percent', description: 'Giảm 10%' },
     'GIAM20': { discount: 20, type: 'percent', description: 'Giảm 20%' },
-    'FREESHIP': { discount: 30000, type: 'fixed', description: 'Giảm 30.000đ phí ship' }
+    'FREESHIP': { discount: 30000, type: 'fixed', description: 'Giảm 30.000đ phí ship' },
+    'WELCOME': { discount: 15, type: 'percent', description: 'Giảm 15%' },
+    'SUMMER2025': { discount: 100000, type: 'fixed', description: 'Giảm 100.000đ' }
 };
 
 function calculateDiscount(total, coupon) {
