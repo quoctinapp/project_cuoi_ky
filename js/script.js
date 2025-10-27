@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateUserUI();
     document.getElementById('souvenirLink').style.display = loggedInUser ? 'block' : 'none';
     document.getElementById('serviceLink').style.display = loggedInUser ? 'block' : 'none';
+    document.getElementById('couponLink').style.display = loggedInUser ? 'block' : 'none';
     
     const serviceModule = document.getElementById("services");
     if (serviceModule && !localStorage.getItem("loggedInUser")) {
