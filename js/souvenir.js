@@ -12,10 +12,10 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 const products = [
-    { id: 1, name: 'Hoa Đà Lạt', icon: '🌸', price: 150000, description: 'Hoa tươi đóng gói đẹp mắt, giữ tươi lâu' },
-    { id: 2, name: 'Dâu Tây Đà Lạt', icon: '🍓', price: 200000, description: 'Dâu tây tươi ngon, sạch, 500g/hộp' },
-    { id: 3, name: 'Atiso Đà Lạt', icon: '🫖', price: 180000, description: 'Trà atiso nguyên chất, hộp 200g' },
-    { id: 4, name: 'Mứt Dâu', icon: '🍯', price: 120000, description: 'Mứt dâu tây thủ công, lọ 300g' },
+    { id: 1, name: 'Hoa Đà Lạt', icon: "image/cam_tu_cau.png", price: 150000, description: 'Hoa tươi đóng gói đẹp mắt, giữ tươi lâu' },
+    { id: 2, name: 'Dâu Tây Đà Lạt', icon: "image/dau_tay_da_lat.png", price: 200000, description: 'Dâu tây tươi ngon, sạch, 500g/hộp' },
+    { id: 3, name: 'Atiso Đà Lạt', icon: "image/atiso_da_lat.png", price: 180000, description: 'Trà atiso nguyên chất, hộp 200g' },
+    { id: 4, name: 'Mứt Dâu', icon: "image/mat_ong_da_lat.png", price: 120000, description: 'Mứt dâu tây thủ công, lọ 300g' },
     { id: 5, name: 'Rượu Sim', icon: '🍷', price: 250000, description: 'Rượu sim đặc sản Đà Lạt, chai 500ml' },
     { id: 6, name: 'Socola Đà Lạt', icon: '🍫', price: 100000, description: 'Socola thủ công cao cấp, hộp 200g' },
     { id: 7, name: 'Mật Ong', icon: '🍯', price: 300000, description: 'Mật ong rừng nguyên chất, chai 500ml' },
@@ -83,7 +83,9 @@ function renderProducts() {
     const grid = document.getElementById('productsGrid');
     grid.innerHTML = products.map(product => 
         `<div class="product-card">
-            <div class="product-image">${product.icon}</div>
+            <div class="product-image">
+                <img src="${product.icon}" alt="product_image">    
+            </div>
             <div class="product-info">
                 <div class="product-name">${product.name}</div>
                 <div class="product-description">${product.description}</div>
