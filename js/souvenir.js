@@ -132,7 +132,9 @@ function updateCartUI() {
 
     cartItems.innerHTML = cart.map(item => 
         `<div class="cart-item">
-            <div class="cart-item-image">${item.icon}</div>
+            <div class="cart-item-image">
+                <img loading="lazy" src="${item.icon}" alt="product_image">    
+            </div>
             <div class="cart-item-info">
                 <div class="cart-item-name">${item.name}</div>
                 <div class="cart-item-price">${item.price.toLocaleString()}đ</div>
