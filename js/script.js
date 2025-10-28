@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('souvenirLink').style.display = loggedInUser ? 'block' : 'none';
     document.getElementById('serviceLink').style.display = loggedInUser ? 'block' : 'none';
     document.getElementById('couponLink').style.display = loggedInUser ? 'block' : 'none';
+    document.getElementById('3d_tour').style.display = loggedInUser ? 'block' : 'none';
     
     const serviceModule = document.getElementById("services");
     if (serviceModule && !localStorage.getItem("loggedInUser")) {
@@ -245,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
     
-    // Modal functionality
     const modal = document.getElementById('location-modal');
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const openModalBtns = document.querySelectorAll('.open-modal-btn');
