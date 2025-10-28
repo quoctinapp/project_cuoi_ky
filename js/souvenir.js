@@ -84,7 +84,7 @@ function renderProducts() {
     grid.innerHTML = products.map(product => 
         `<div class="product-card">
             <div class="product-image">
-                <img src="${product.icon}" alt="product_image">    
+                <img loading="lazy" src="${product.icon}" alt="product_image">    
             </div>
             <div class="product-info">
                 <div class="product-name">${product.name}</div>
