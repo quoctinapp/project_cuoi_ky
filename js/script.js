@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             userInfo.style.display = 'none';
         }
     }
+    
     updateUserUI();
     document.getElementById('souvenirLink').style.display = loggedInUser ? 'block' : 'none';
     document.getElementById('serviceLink').style.display = loggedInUser ? 'block' : 'none';
@@ -289,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Toast notification
     const toast = document.getElementById('toast-notification');
     const toastMessage = document.getElementById('toast-message');
     let toastTimeout;
@@ -305,7 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000); 
     };
 
-    // Pricing calculations
     const packagePrices = { 
         "Gói Tiết Kiệm": 200000, 
         "Gói Tiêu Chuẩn": 1250000, 
