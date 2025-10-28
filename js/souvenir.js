@@ -19,10 +19,10 @@ const products = [
     { id: 5, name: 'Rượu Sim', icon: "image/ruou_vang_da_lat.png", price: 250000, description: 'Rượu sim đặc sản Đà Lạt, chai 500ml' },
     { id: 6, name: 'Socola Đà Lạt', icon: "image/socola_da_lat.png", price: 100000, description: 'Socola thủ công cao cấp, hộp 200g' },
     { id: 7, name: 'Mật Ong', icon: "image/mat_ong_da_lat.png", price: 300000, description: 'Mật ong rừng nguyên chất, chai 500ml' },
-    { id: 8, name: 'Cà Phê Arabica', icon: "image/ca_phe_da_lat.png", price: 220000, description: 'Cà phê rang xay đặc biệt, 250g' },
-    { id: 9, name: 'Khoai Lang Tím', icon: '🍠', price: 80000, description: 'Khoai lang tím tươi, 1kg' },
-    { id: 10, name: 'Sữa Chua Dâu', icon: '🥛', price: 50000, description: 'Sữa chua dâu tây Đà Lạt, hộp 4 ly' },
-    { id: 11, name: 'Hạt Macca', icon: '🥜', price: 350000, description: 'Hạt macca rang muối, hộp 250g' },
+    { id: 8, name: 'Cà Phê Robusta', icon: "image/ca_phe_da_lat.png", price: 220000, description: 'Cà phê rang xay đặc biệt, 250g' },
+    { id: 9, name: 'Khoai Lang Tím', icon: "image/khoai_lang_tim.png", price: 80000, description: 'Khoai lang tím tươi, 1kg' },
+    { id: 10, name: 'Sữa Chua Dâu', icon: "image/sua_chua_dau.png", price: 50000, description: 'Sữa chua dâu tây Đà Lạt, hộp 4 ly' },
+    { id: 11, name: 'Hạt Macca', icon: "image/hat_macca.png", price: 350000, description: 'Hạt macca rang muối, hộp 250g' },
     { id: 12, name: 'Trà Ô Long', icon: '🍵', price: 160000, description: 'Trà ô long Đà Lạt, hộp 100g' }
 ];
 
